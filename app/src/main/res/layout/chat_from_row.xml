@@ -17,6 +17,8 @@
         android:maxWidth="240dp"
         android:padding="16dp"
         android:text="This is my message testing just testing man calm down it very goog practice anither test and another test."
+        android:textColor="@color/black"
+        android:textIsSelectable="true"
         app:layout_constraintStart_toEndOf="@+id/imageview_chat_from_row"
         app:layout_constraintTop_toTopOf="@+id/imageview_chat_from_row" />
 

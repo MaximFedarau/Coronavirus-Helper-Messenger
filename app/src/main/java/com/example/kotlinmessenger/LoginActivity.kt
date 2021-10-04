@@ -12,6 +12,7 @@ class LoginActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.hide()
         setContentView(R.layout.activity_login)
         login_button_login.setOnClickListener {
             val email = email_edittext_login.text.toString()
