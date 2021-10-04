@@ -56,6 +56,7 @@
         android:layout_marginTop="36dp"
         android:width="280dp"
         android:background="@drawable/rounded_button"
+        android:textColor="@color/white"
         android:text="Log in"
         app:layout_constraintEnd_toEndOf="@+id/password_edittext_login"
         app:layout_constraintStart_toStartOf="@+id/password_edittext_login"
