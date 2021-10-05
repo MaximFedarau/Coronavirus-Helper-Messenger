@@ -25,17 +25,30 @@ class LatestMessagesActivity : AppCompatActivity() {
 
     class LatestMessageRow(val chatMessage: ChatLogActivity.ChatMessage): Item<GroupieViewHolder>() {
         var chatPartnerUser: User?= null
-
         override fun bind(viewHolder: GroupieViewHolder, position: Int) {
-            if (chatMessage.text.length<=55) viewHolder.itemView.message_textview_latest_message.text = chatMessage.text
-            else {
-                var shortedText = ""
-                for (i in 0..55) {
-                    shortedText += chatMessage.text[i]
+            val authorMessageId = chatMessage.fromId
+            val refUsername = FirebaseDatabase.getInstance().getReference("/users/$authorMessageId")
+            refUsername.addListenerForSingleValueEvent(object: ValueEventListener{
+                override fun onCancelled(error: DatabaseError) {
+
                 }
-                shortedText+="..."
-                viewHolder.itemView.message_textview_latest_message.text = shortedText
-            }
+
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val usernameForLatestMessages = snapshot.getValue(User::class.java)?.username
+                    var completeMessage="Nothing"
+                    if (authorMessageId == FirebaseAuth.getInstance().uid) {completeMessage = "You: ${chatMessage.text}"}
+                    else {completeMessage = usernameForLatestMessages+": "+chatMessage.text}
+                    if (completeMessage.length<=55) viewHolder.itemView.message_textview_latest_message.text = completeMessage//chatMessage.text
+                    else {
+                        var shortedText = ""
+                        for (i in 0..55) {
+                            shortedText += completeMessage[i]
+                        }
+                        shortedText+="..."
+                        viewHolder.itemView.message_textview_latest_message.text = shortedText
+                    }
+                }
+            })
 
             val chatPartnerId: String
             if (chatMessage.fromId == FirebaseAuth.getInstance().uid) {
