@@ -14,6 +14,7 @@
         android:layout_marginEnd="8dp"
         android:background="@drawable/rounded_edittext_register_login"
         android:maxWidth="240dp"
+        android:minWidth="48dp"
         android:padding="16dp"
         android:text="This is my message testing just testing man calm down it very goog practice anither test and another test."
         android:textColor="@color/black"
@@ -30,10 +31,13 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="360dp"
+        app:civ_border_color="@color/black"
+        app:civ_border_width="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textview_to_row"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/btn_star_big_off"
-        app:civ_border_width="2dp"
-        app:civ_border_color="@color/black"/>
+        app:srcCompat="@android:drawable/btn_star_big_off" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
